@@ -10,7 +10,6 @@ jobs:
   tests:
     # Разворачиваем окружение:
     runs-on: ubuntu-latest
-
     # Блок services аналогичен docker-compose.yml
     services:
       postgres:
@@ -28,9 +27,7 @@ jobs:
         # В результате тесты опять решат, что базы нет, — и упадут
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-    # Копируем код проекта
-    - name: Check out code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     # Устанавливаем Python с помощью action
     - name: Set up Python
       uses: actions/setup-python@v4
